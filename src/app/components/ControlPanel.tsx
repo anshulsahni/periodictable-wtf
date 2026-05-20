@@ -1,3 +1,5 @@
+import mixpanel from "../lib/mixpanel";
+
 const getTempState = (temp: number) => {
   if (temp <= 0) return "ABS. ZERO";
   if (temp <= 77) return "CRYOGENIC";
@@ -68,9 +70,13 @@ export default function ControlPanel({
             min="0"
             max="6000"
             value={temperature}
-            onChange={(e) =>
-              setTemperature(Number(e.target.value))
-            }
+            onChange={(e) => {
+              const value = Number(e.target.value);
+              setTemperature(value);
+              mixpanel.track("Temperature Changed", {
+                value,
+              });
+            }}
             className="h-3 w-full cursor-pointer appearance-none border border-black bg-transparent [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-black [&::-webkit-slider-thumb]:bg-white"
             style={{
               background:
@@ -101,7 +107,10 @@ export default function ControlPanel({
           ].map((item) => (
             <button
               key={item.label}
+
               onClick={() => setTemperature(item.value)}
+
+              
               className={`border border-black px-2.5 py-1 text-[10px] font-bold uppercase transition-all hover:bg-black hover:text-white ${
                 temperature === item.value
                   ? "bg-black text-white"

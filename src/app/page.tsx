@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import mixpanel from "./lib/mixpanel";
 import ElementBox from "./components/ElementBox";
 import ControlPanel from "./components/ControlPanel";
 
@@ -43,6 +43,7 @@ export default function Home() {
   const [temperature, setTemperature] = useState(298);
 
   useEffect(() => {
+    mixpanel.track("Page Viewed");
     fetch("/elements.json")
       .then((res) => res.json())
       .then((data) => {
