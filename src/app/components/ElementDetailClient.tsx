@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ElementData } from "../types/element";
-import { getElementPhaseAndColor, getTempState, getBlockColor } from "../lib/elementUtils";
+import { getElementPhaseAndColor, getTempState, getBlockColor, getDirectWikipediaImageUrl } from "../lib/elementUtils";
 import mixpanel from "../lib/mixpanel";
 
 interface Props {
@@ -497,14 +497,14 @@ export default function ElementDetailClient({ element }: Props) {
             )}
 
             {/* SPECTRAL IMAGE */}
-            {element.spectral_img && (
+            {getDirectWikipediaImageUrl(element.spectral_img) && (
               <div className="border-2 border-black bg-white p-4 shadow-[6px_6px_0px_black] flex flex-col justify-between">
                 <div>
                   <div className="text-[10px] text-gray-400 font-bold uppercase mb-2">SPECTRUM ANALYSIS // EMISSION LINE</div>
                   <div className="border-2 border-black overflow-hidden bg-black flex items-center justify-center aspect-video relative">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={element.spectral_img}
+                      src={getDirectWikipediaImageUrl(element.spectral_img) || ""}
                       alt={`Spectral signature of ${element.name}`}
                       className="w-full h-auto object-contain"
                     />
