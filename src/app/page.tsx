@@ -1,41 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import mixpanel from "./lib/mixpanel";
 import ElementBox from "./components/ElementBox";
 import ControlPanel from "./components/ControlPanel";
-
-// Dynamic Phase and Color Helper
-const getElementPhaseAndColor = (element: any, temp: number) => {
-  const melt = element.melt;
-  const boil = element.boil;
-
-  // Solid state if below melting point
-  if (melt !== null && melt !== undefined && temp < melt) {
-    return { phase: "solid", color: "#ff4b93" };
-  }
-  
-  // Liquid state if above melting point but below boiling point
-  if (melt !== null && melt !== undefined && (boil === null || boil === undefined || temp < boil)) {
-    if (boil === null || boil === undefined) {
-      return element.number > 100 
-        ? { phase: "unknown", color: "repeating-linear-gradient(45deg, #d1d5db, #d1d5db 4px, #e5e7eb 4px, #e5e7eb 8px)" }
-        : { phase: "liquid", color: "#31b7ea" };
-    }
-    return { phase: "liquid", color: "#31b7ea" };
-  }
-
-  // Gas state if above boiling point
-  if (boil !== null && boil !== undefined && temp >= boil) {
-    return { phase: "gas", color: "#ffe600" };
-  }
-
-  // Fallback to unknown
-  return { 
-    phase: "unknown", 
-    color: "repeating-linear-gradient(45deg, #d1d5db, #d1d5db 4px, #e5e7eb 4px, #e5e7eb 8px)" 
-  };
-};
+import { getElementPhaseAndColor } from "./lib/elementUtils";
 
 export default function Home() {
   const [elements, setElements] = useState<any[]>([]);
@@ -133,13 +103,15 @@ export default function Home() {
                 : "0 0 32px rgba(255,230,0,0.9)";
 
             return (
-              <div
+              <Link
                 key={element.number}
+                href={`/element/${element.name.toLowerCase()}`}
                 style={{
                   gridColumn: element.xpos,
                   gridRow: element.ypos,
                   boxShadow: heatGlow,
                   transition: "all 0.4s ease",
+                  display: "block",
                 }}
               >
                 <ElementBox
@@ -151,7 +123,7 @@ export default function Home() {
                   color={color}
                   faded={faded}
                 />
-              </div>
+              </Link>
             );
           })}
         </div>

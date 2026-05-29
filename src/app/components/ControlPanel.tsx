@@ -1,15 +1,5 @@
 import mixpanel from "../lib/mixpanel";
-
-const getTempState = (temp: number) => {
-  if (temp <= 0) return "ABS. ZERO";
-  if (temp <= 77) return "CRYOGENIC";
-  if (temp < 273) return "FROZEN";
-  if (temp < 373) return "TEMPERATE";
-  if (temp <= 373) return "BOILING";
-  if (temp <= 1000) return "SCORCHING";
-  if (temp <= 3000) return "MOLTEN";
-  return "PLASMA";
-};
+import { getTempState } from "../lib/elementUtils";
 
 type Props = {
   temperature: number;
