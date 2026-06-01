@@ -14,8 +14,8 @@ export default function ElementDetailClient({ element }: Props) {
   const [temperature, setTemperature] = useState(298);
 
   const { phase, color } = getElementPhaseAndColor(element, temperature);
-  const isDarkText = color === "#ffe600" || color.startsWith("repeating-linear-gradient");
-  const textColorClass = isDarkText ? "text-black" : "text-white";
+  // Always use high-contrast dark text to satisfy WCAG AA (and AAA) guidelines
+  const textColorClass = "text-black";
 
   const heatGlow =
     temperature < 1000
@@ -154,7 +154,7 @@ export default function ElementDetailClient({ element }: Props) {
                 className="px-2.5 py-1 text-[10px] font-mono font-black uppercase border border-black leading-none flex items-center gap-1.5 shadow-[2px_2px_0px_black]"
                 style={{
                   background: phase === "solid" ? "#ff4b93" : phase === "liquid" ? "#31b7ea" : phase === "gas" ? "#ffe600" : "#d1d5db",
-                  color: phase === "gas" || phase === "unknown" ? "black" : "white",
+                  color: "black",
                 }}
               >
                 {phase === "solid" && <span className="w-1.5 h-1.5 rounded-full bg-white inline-block animate-ping"></span>}
@@ -232,40 +232,40 @@ export default function ElementDetailClient({ element }: Props) {
             {/* Large Name */}
             <h1 className="text-5xl sm:text-6xl font-black uppercase tracking-tight text-black border-b-2 border-black pb-3 mb-4 flex justify-between items-baseline">
               <span>{element.name}</span>
-              <span className="text-xl font-mono text-gray-400 lowercase font-medium">/ {element.symbol}</span>
+              <span className="text-xl font-mono text-zinc-500 lowercase font-medium">/ {element.symbol}</span>
             </h1>
 
             {/* Metadata Tags Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
               <div className="border border-black/10 bg-[#fbf9f4] p-2.5 font-mono">
-                <div className="text-[9px] text-gray-400 uppercase font-black">Appearance</div>
+                <div className="text-[9px] text-zinc-500 uppercase font-black">Appearance</div>
                 <div className="text-xs font-bold text-black capitalize truncate">{element.appearance ?? "Unknown"}</div>
               </div>
               <div className="border border-black/10 bg-[#fbf9f4] p-2.5 font-mono">
-                <div className="text-[9px] text-gray-400 uppercase font-black">Density</div>
+                <div className="text-[9px] text-zinc-500 uppercase font-black">Density</div>
                 <div className="text-xs font-bold text-black truncate">{element.density ? `${element.density} g/cm³` : "Unknown"}</div>
               </div>
               <div className="border border-black/10 bg-[#fbf9f4] p-2.5 font-mono">
-                <div className="text-[9px] text-gray-400 uppercase font-black">Discovered By</div>
+                <div className="text-[9px] text-zinc-500 uppercase font-black">Discovered By</div>
                 <div className="text-xs font-bold text-black truncate">{element.discovered_by ?? "Ancient"}</div>
               </div>
               <div className="border border-black/10 bg-[#fbf9f4] p-2.5 font-mono">
-                <div className="text-[9px] text-gray-400 uppercase font-black">Named By</div>
+                <div className="text-[9px] text-zinc-500 uppercase font-black">Named By</div>
                 <div className="text-xs font-bold text-black truncate">{element.named_by ?? "N/A"}</div>
               </div>
             </div>
 
             {/* Wikipedia Summary Section */}
             <div className="border-2 border-black bg-[#fcfbfa] p-4 font-mono relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-black/10 px-2 py-0.5 text-[8px] font-bold uppercase text-gray-600 border-l border-b border-black/20">
+              <div className="absolute top-0 right-0 bg-black/10 px-2 py-0.5 text-[8px] font-bold uppercase text-zinc-600 border-l border-b border-black/20">
                 SYSTEM DOCUMENTATION
               </div>
-              <h3 className="text-xs font-black uppercase text-gray-400 tracking-wider mb-2">About the Element:</h3>
+              <h3 className="text-xs font-black uppercase text-zinc-500 tracking-wider mb-2">About the Element:</h3>
               <p className="text-xs sm:text-sm text-black leading-relaxed font-medium">
                 {element.summary}
               </p>
               
-              <div className="mt-4 pt-3 border-t border-black/10 flex justify-between items-center text-[9px] text-gray-400">
+              <div className="mt-4 pt-3 border-t border-black/10 flex justify-between items-center text-[9px] text-zinc-500">
                 <span>wikipedia database archive</span>
                 <a
                   href={element.source}
@@ -279,7 +279,7 @@ export default function ElementDetailClient({ element }: Props) {
             </div>
           </div>
 
-          <div className="mt-6 flex justify-between items-center text-[9px] text-gray-400 font-mono pt-4 border-t border-black/10">
+          <div className="mt-6 flex justify-between items-center text-[9px] text-zinc-500 font-mono pt-4 border-t border-black/10">
             <span>atomic sequence index: #{element.number.toString().padStart(3, "0")}</span>
             <span className="uppercase font-bold tracking-widest text-black/40">system initialized // wtf v0.1</span>
           </div>
@@ -296,24 +296,24 @@ export default function ElementDetailClient({ element }: Props) {
         
         {/* CARD 1: ATOMIC & COORD METRICS */}
         <div className="border-2 border-black bg-white p-4 shadow-[4px_4px_0px_black]">
-          <div className="text-xs font-black uppercase tracking-widest text-[#ff4b93] border-b border-black/10 pb-1.5 mb-3">
+          <div className="text-xs font-black uppercase tracking-widest text-[#be185d] border-b border-black/10 pb-1.5 mb-3">
             01 / ATOMIC PROFILE
           </div>
           <div className="flex flex-col gap-2 text-xs">
             <div className="flex justify-between border-b border-dashed border-black/10 pb-1">
-              <span className="text-gray-400">Atomic Number:</span>
+              <span className="text-zinc-500">Atomic Number:</span>
               <span className="font-bold">{element.number}</span>
             </div>
             <div className="flex justify-between border-b border-dashed border-black/10 pb-1">
-              <span className="text-gray-400">Atomic Weight:</span>
+              <span className="text-zinc-500">Atomic Weight:</span>
               <span className="font-bold">{element.atomic_mass.toFixed(6)} u</span>
             </div>
             <div className="flex justify-between border-b border-dashed border-black/10 pb-1">
-              <span className="text-gray-400">Period Coordinate:</span>
+              <span className="text-zinc-500">Period Coordinate:</span>
               <span className="font-bold">Period {element.period}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-400">Group Coordinate:</span>
+              <span className="text-zinc-500">Group Coordinate:</span>
               <span className="font-bold">Group {element.group}</span>
             </div>
           </div>
@@ -321,28 +321,28 @@ export default function ElementDetailClient({ element }: Props) {
 
         {/* CARD 2: TEMPERATURE STATES */}
         <div className="border-2 border-black bg-white p-4 shadow-[4px_4px_0px_black]">
-          <div className="text-xs font-black uppercase tracking-widest text-[#31b7ea] border-b border-black/10 pb-1.5 mb-3">
+          <div className="text-xs font-black uppercase tracking-widest text-[#0369a1] border-b border-black/10 pb-1.5 mb-3">
             02 / THERMODYNAMICS
           </div>
           <div className="flex flex-col gap-2 text-xs">
             <div className="flex justify-between border-b border-dashed border-black/10 pb-1">
-              <span className="text-gray-400">Melting Point:</span>
+              <span className="text-zinc-500">Melting Point:</span>
               <span className="font-bold">
                 {element.melt !== null ? `${element.melt} K (${Math.round(element.melt - 273.15)}°C)` : "Unknown / N/A"}
               </span>
             </div>
             <div className="flex justify-between border-b border-dashed border-black/10 pb-1">
-              <span className="text-gray-400">Boiling Point:</span>
+              <span className="text-zinc-500">Boiling Point:</span>
               <span className="font-bold">
                 {element.boil !== null ? `${element.boil} K (${Math.round(element.boil - 273.15)}°C)` : "Unknown / N/A"}
               </span>
             </div>
             <div className="flex justify-between border-b border-dashed border-black/10 pb-1">
-              <span className="text-gray-400">Molar Heat Capacity:</span>
+              <span className="text-zinc-500">Molar Heat Capacity:</span>
               <span className="font-bold">{element.molar_heat ? `${element.molar_heat} J/(mol·K)` : "Unknown"}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-400">Phase (at 298K):</span>
+              <span className="text-zinc-500">Phase (at 298K):</span>
               <span className="font-bold capitalize">{element.phase}</span>
             </div>
           </div>
@@ -350,20 +350,20 @@ export default function ElementDetailClient({ element }: Props) {
 
         {/* CARD 3: CHEMICAL AFFINITIES */}
         <div className="border-2 border-black bg-white p-4 shadow-[4px_4px_0px_black]">
-          <div className="text-xs font-black uppercase tracking-widest text-[#ffe600] border-b border-black/10 pb-1.5 mb-3 text-shadow-[1px_1px_0px_rgba(0,0,0,0.15)]">
+          <div className="text-xs font-black uppercase tracking-widest text-[#b45309] border-b border-black/10 pb-1.5 mb-3 text-shadow-[1px_1px_0px_rgba(0,0,0,0.15)]">
             03 / ELECTROMAGNETICS
           </div>
           <div className="flex flex-col gap-2 text-xs">
             <div className="flex justify-between border-b border-dashed border-black/10 pb-1">
-              <span className="text-gray-400">Electronegativity:</span>
+              <span className="text-zinc-500">Electronegativity:</span>
               <span className="font-bold">{element.electronegativity_pauling ? `${element.electronegativity_pauling} (Pauling)` : "Unknown"}</span>
             </div>
             <div className="flex justify-between border-b border-dashed border-black/10 pb-1">
-              <span className="text-gray-400">Electron Affinity:</span>
+              <span className="text-zinc-500">Electron Affinity:</span>
               <span className="font-bold">{element.electron_affinity ? `${element.electron_affinity} kJ/mol` : "Unknown"}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-400">1st Ionization Energy:</span>
+              <span className="text-zinc-500">1st Ionization Energy:</span>
               <span className="font-bold">
                 {element.ionization_energies && element.ionization_energies.length > 0
                   ? `${element.ionization_energies[0]} kJ/mol`
@@ -375,20 +375,20 @@ export default function ElementDetailClient({ element }: Props) {
 
         {/* CARD 4: ELECTRONIC STRUCTURE */}
         <div className="border-2 border-black bg-white p-4 shadow-[4px_4px_0px_black]">
-          <div className="text-xs font-black uppercase tracking-widest text-[#a855f7] border-b border-black/10 pb-1.5 mb-3">
+          <div className="text-xs font-black uppercase tracking-widest text-[#7e22ce] border-b border-black/10 pb-1.5 mb-3">
             04 / QUANTUM ORBITALS
           </div>
           <div className="flex flex-col gap-2 text-xs">
             <div className="flex justify-between border-b border-dashed border-black/10 pb-1">
-              <span className="text-gray-400">Orbital Block:</span>
+              <span className="text-zinc-500">Orbital Block:</span>
               <span className="font-bold uppercase">{element.block}-block</span>
             </div>
             <div className="flex justify-between border-b border-dashed border-black/10 pb-1">
-              <span className="text-gray-400">Electron Configuration:</span>
+              <span className="text-zinc-500">Electron Configuration:</span>
               <span className="font-bold truncate max-w-[180px]">{element.electron_configuration}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-400">Configuration Semantic:</span>
+              <span className="text-zinc-500">Configuration Semantic:</span>
               <span className="font-bold truncate max-w-[180px]">{element.electron_configuration_semantic}</span>
             </div>
           </div>
@@ -396,16 +396,16 @@ export default function ElementDetailClient({ element }: Props) {
 
         {/* CARD 5: SHELL LAYOUT */}
         <div className="border-2 border-black bg-white p-4 shadow-[4px_4px_0px_black]">
-          <div className="text-xs font-black uppercase tracking-widest text-emerald-500 border-b border-black/10 pb-1.5 mb-3">
+          <div className="text-xs font-black uppercase tracking-widest text-emerald-700 border-b border-black/10 pb-1.5 mb-3">
             05 / ELECTRON SHELLS
           </div>
           <div className="flex flex-col gap-2 text-xs">
             <div className="flex justify-between border-b border-dashed border-black/10 pb-1">
-              <span className="text-gray-400">Shell Quantities:</span>
+              <span className="text-zinc-500">Shell Quantities:</span>
               <span className="font-bold">{element.shells.join(" - ")}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-400">Total Valence Shells:</span>
+              <span className="text-zinc-500">Total Valence Shells:</span>
               <span className="font-bold">{element.shells.length} Orbitals</span>
             </div>
           </div>
@@ -413,16 +413,16 @@ export default function ElementDetailClient({ element }: Props) {
 
         {/* CARD 6: INDUSTRIAL INDEX */}
         <div className="border-2 border-black bg-white p-4 shadow-[4px_4px_0px_black]">
-          <div className="text-xs font-black uppercase tracking-widest text-orange-500 border-b border-black/10 pb-1.5 mb-3">
+          <div className="text-xs font-black uppercase tracking-widest text-orange-700 border-b border-black/10 pb-1.5 mb-3">
             06 / CHEMICAL TAXONOMY
           </div>
           <div className="flex flex-col gap-2 text-xs">
             <div className="flex justify-between border-b border-dashed border-black/10 pb-1">
-              <span className="text-gray-400">Series Category:</span>
+              <span className="text-zinc-500">Series Category:</span>
               <span className="font-bold capitalize">{element.category}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-400">CPK Color Index:</span>
+              <span className="text-zinc-500">CPK Color Index:</span>
               <span className="font-bold flex items-center gap-1.5 uppercase">
                 {element["cpk-hex"] ? (
                   <>
@@ -454,7 +454,7 @@ export default function ElementDetailClient({ element }: Props) {
             {element.image && element.image.url && (
               <div className="border-2 border-black bg-white p-4 shadow-[6px_6px_0px_black] flex flex-col justify-between">
                 <div>
-                  <div className="text-[10px] text-gray-400 font-bold uppercase mb-2">IMAGE DEPOSITARY // PHOTO</div>
+                  <div className="text-[10px] text-zinc-500 font-bold uppercase mb-2">IMAGE DEPOSITARY // PHOTO</div>
                   <div className="border-2 border-black overflow-hidden bg-gray-100 flex items-center justify-center aspect-video relative group">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -466,7 +466,7 @@ export default function ElementDetailClient({ element }: Props) {
                 </div>
                 <div className="mt-3 bg-gray-50 border border-black/10 p-2.5">
                   <div className="text-[9px] font-bold text-black leading-tight mb-1">{element.image.title ?? `Sample of ${element.name}`}</div>
-                  <div className="text-[8px] text-gray-400 leading-normal line-clamp-2 truncate hover:line-clamp-none whitespace-normal select-all">
+                  <div className="text-[8px] text-zinc-500 leading-normal line-clamp-2 truncate hover:line-clamp-none whitespace-normal select-all">
                     Credit: {element.image.attribution}
                   </div>
                 </div>
@@ -477,7 +477,7 @@ export default function ElementDetailClient({ element }: Props) {
             {element.bohr_model_image && (
               <div className="border-2 border-black bg-white p-4 shadow-[6px_6px_0px_black] flex flex-col justify-between">
                 <div>
-                  <div className="text-[10px] text-gray-400 font-bold uppercase mb-2">QUANTUM ARCHIVES // BOHR MODEL</div>
+                  <div className="text-[10px] text-zinc-500 font-bold uppercase mb-2">QUANTUM ARCHIVES // BOHR MODEL</div>
                   <div className="border-2 border-black overflow-hidden bg-[#faf8f4] flex items-center justify-center aspect-video p-2 relative">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -489,7 +489,7 @@ export default function ElementDetailClient({ element }: Props) {
                 </div>
                 <div className="mt-3 bg-gray-50 border border-black/10 p-2.5">
                   <div className="text-[9px] font-bold text-black leading-tight">Orbital Electron Configuration</div>
-                  <div className="text-[8px] text-gray-400 mt-1 leading-normal">
+                  <div className="text-[8px] text-zinc-500 mt-1 leading-normal">
                     Visualization showing the distribution of electrons in concentric Bohr energy levels.
                   </div>
                 </div>
@@ -500,7 +500,7 @@ export default function ElementDetailClient({ element }: Props) {
             {getDirectWikipediaImageUrl(element.spectral_img) && (
               <div className="border-2 border-black bg-white p-4 shadow-[6px_6px_0px_black] flex flex-col justify-between">
                 <div>
-                  <div className="text-[10px] text-gray-400 font-bold uppercase mb-2">SPECTRUM ANALYSIS // EMISSION LINE</div>
+                  <div className="text-[10px] text-zinc-500 font-bold uppercase mb-2">SPECTRUM ANALYSIS // EMISSION LINE</div>
                   <div className="border-2 border-black overflow-hidden bg-black flex items-center justify-center aspect-video relative">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -512,7 +512,7 @@ export default function ElementDetailClient({ element }: Props) {
                 </div>
                 <div className="mt-3 bg-gray-50 border border-black/10 p-2.5">
                   <div className="text-[9px] font-bold text-black leading-tight">Emission Spectrum Signature</div>
-                  <div className="text-[8px] text-gray-400 mt-1 leading-normal">
+                  <div className="text-[8px] text-zinc-500 mt-1 leading-normal">
                     Spectroscopy lines matching element atomic wavelengths when excited by high electric potential.
                   </div>
                 </div>

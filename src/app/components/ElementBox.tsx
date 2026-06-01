@@ -17,8 +17,8 @@ export default function ElementBox({
   block,
   topRight,
 }: Props) {
-  const isDarkText = color === "#ffe600" || color.startsWith("repeating-linear-gradient");
-  const textColorClass = isDarkText ? "text-black" : "text-white";
+  // Always use high-contrast dark text to satisfy WCAG AA (and AAA) guidelines
+  const textColorClass = "text-black";
 
   return (
     <div

@@ -129,7 +129,7 @@ export default function Home() {
         </div>
 
         {/* LEGEND ROW */}
-        <div className="mt-4 pt-3 border-t border-black/10 flex justify-between items-center text-[10px] font-mono text-gray-400">
+        <div className="mt-4 pt-3 border-t border-black/10 flex justify-between items-center text-[10px] font-mono text-zinc-600">
           <div className="flex gap-4">
             <div className="flex items-center gap-1.5">
               <span className="w-2.5 h-2.5 border border-black bg-[#ff4b93] inline-block"></span>
@@ -157,19 +157,19 @@ export default function Home() {
           <div className="flex gap-4 text-[9px] tracking-wider">
             <div className="flex items-center gap-1">
               <span>⬉</span>
-              <span className="lowercase text-gray-500/80">atomic #</span>
+              <span className="lowercase text-zinc-600">atomic #</span>
             </div>
             <div className="flex items-center gap-1">
               <span>⬈</span>
-              <span className="lowercase text-gray-500/80">atomic mass</span>
+              <span className="lowercase text-zinc-600">atomic mass</span>
             </div>
             <div className="flex items-center gap-1">
               <span>⬋</span>
-              <span className="lowercase text-gray-500/80">electronegativity</span>
+              <span className="lowercase text-zinc-600">electronegativity</span>
             </div>
             <div className="flex items-center gap-1">
               <span>⬊</span>
-              <span className="lowercase text-gray-500/80">block</span>
+              <span className="lowercase text-zinc-600">block</span>
             </div>
           </div>
         </div>
