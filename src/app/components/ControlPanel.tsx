@@ -28,9 +28,12 @@ export default function ControlPanel({
       >
         
         {/* TEMPERATURE BADGE */}
-        <div className="absolute -top-3 left-4 bg-black text-white px-2.5 py-0.5 text-[9px] font-black uppercase tracking-widest border border-black">
+        <label
+          htmlFor="temp-slider"
+          className="absolute -top-3 left-4 bg-black text-white px-2.5 py-0.5 text-[9px] font-black uppercase tracking-widest border border-black cursor-pointer"
+        >
           Temperature
-        </div>
+        </label>
 
         {/* Temperature */}
         <div className="mb-4">
@@ -56,6 +59,7 @@ export default function ControlPanel({
 
           {/* Slider */}
           <input
+            id="temp-slider"
             type="range"
             min="0"
             max="6000"

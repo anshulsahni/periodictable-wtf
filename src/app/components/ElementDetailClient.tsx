@@ -55,13 +55,22 @@ export default function ElementDetailClient({ element }: Props) {
     >
       {/* HEADER SECTION */}
       <div className="max-w-6xl mx-auto mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-        {/* Back navigation */}
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 border-2 border-black bg-white px-4 py-2 font-mono text-sm font-bold uppercase transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_black] active:translate-x-0 active:translate-y-0 active:shadow-none"
-        >
-          <span>←</span> BACK TO SYSTEM GRID
-        </Link>
+        {/* Navigation Group */}
+        <div className="flex flex-wrap gap-3">
+          <Link
+            href="/"
+            className="text-black inline-flex items-center gap-2 border-2 border-black bg-white px-4 py-2 font-mono text-sm font-bold uppercase transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_black] active:translate-x-0 active:translate-y-0 active:shadow-none"
+          >
+            <span>←</span> BACK TO SYSTEM GRID
+          </Link>
+
+          <Link
+            href="/about"
+            className="text-black inline-flex items-center gap-2 border-2 border-black bg-white px-4 py-2 font-mono text-sm font-bold uppercase transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_black] active:translate-x-0 active:translate-y-0 active:shadow-none"
+          >
+            ABOUT BUILDER ↗
+          </Link>
+        </div>
 
         {/* Blueprint Coords */}
         <div className="border-2 border-black bg-black text-white font-mono px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider flex items-center gap-3">
@@ -135,9 +144,12 @@ export default function ElementDetailClient({ element }: Props) {
               backgroundSize: "16px 16px",
             }}
           >
-            <div className="absolute -top-3.5 left-4 bg-black text-white px-2.5 py-0.5 text-[9px] font-mono font-black uppercase tracking-widest border border-black">
+            <label
+              htmlFor="temp-reactor-slider"
+              className="absolute -top-3.5 left-4 bg-black text-white px-2.5 py-0.5 text-[9px] font-mono font-black uppercase tracking-widest border border-black cursor-pointer"
+            >
               Temperature Reactor Simulator
-            </div>
+            </label>
 
             <div className="flex justify-between items-baseline mb-4 mt-2">
               <div className="flex items-baseline">
@@ -164,6 +176,7 @@ export default function ElementDetailClient({ element }: Props) {
 
             {/* Slider */}
             <input
+              id="temp-reactor-slider"
               type="range"
               min="0"
               max="6000"

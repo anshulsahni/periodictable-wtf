@@ -46,18 +46,27 @@ export default function Home() {
     >
 
       {/* TOP HEADER */}
-      <div className="mb-5 flex flex-col items-start gap-1">
-        <div className="flex items-center gap-3">
-          <h1 className="flex items-center font-bold uppercase tracking-tight text-black text-5xl sm:text-6xl">
-            <span>
-              PERIODIC<span className="text-[#ff4b93]">.</span>TABLE
-            </span>
-            <span className="ml-2 inline-block -rotate-2 bg-black px-2 py-1 text-3xl font-black text-white tracking-tight shadow-lg" style={{letterSpacing: '-0.05em'}}>WTF</span>
-          </h1>
+      <div className="mb-5 flex flex-col md:flex-row justify-between md:items-center gap-4">
+        <div className="flex flex-col items-start gap-1">
+          <div className="flex items-center gap-3">
+            <h1 className="flex items-center font-bold uppercase tracking-tight text-black text-5xl sm:text-6xl">
+              <span>
+                PERIODIC<span className="text-[#ff4b93]">.</span>TABLE
+              </span>
+              <span className="ml-2 inline-block -rotate-2 bg-black px-2 py-1 text-3xl font-black text-white tracking-tight shadow-lg" style={{letterSpacing: '-0.05em'}}>WTF</span>
+            </h1>
+          </div>
+          <div className="mt-1 text-xs font-medium uppercase tracking-widest text-black/60">
+            A TACTILE PERIODIC TABLE &middot; 118 ELEMENTS &middot; PHASE BY TEMPERATURE
+          </div>
         </div>
-        <div className="mt-1 text-xs font-medium uppercase tracking-widest text-black/60">
-          A TACTILE PERIODIC TABLE &middot; 118 ELEMENTS &middot; PHASE BY TEMPERATURE
-        </div>
+
+        <Link
+          href="/about"
+          className="text-black self-start md:self-center inline-flex items-center gap-2 border-2 border-black bg-white px-4 py-2 font-mono text-sm font-bold uppercase transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_black] active:translate-x-0 active:translate-y-0 active:shadow-none"
+        >
+          ABOUT BUILDER ↗
+        </Link>
       </div>
 
       {/* CONTROL PANEL */}
