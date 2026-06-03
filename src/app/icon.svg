@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <!-- Shadow -->
+  <rect x="4" y="4" width="56" height="56" fill="black" rx="2" />
+  <!-- Main Frame -->
+  <rect x="1" y="1" width="56" height="56" fill="#ff4b93" stroke="black" stroke-width="5" rx="2" />
+  <!-- Center: Wt Symbol -->
+  <text x="29" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" text-anchor="middle" fill="black" letter-spacing="-1">Wt</text>
+</svg>

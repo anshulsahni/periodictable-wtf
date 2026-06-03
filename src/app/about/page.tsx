@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import NavbarLogo from "../components/NavbarLogo";
 
 export const metadata: Metadata = {
   title: "About the Builder - Manan Sahni | Periodic Table WTF",
@@ -20,12 +21,9 @@ export default function AboutPage() {
         {/* TOP HEADER */}
         <header className="mb-8 flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-b-2 border-black pb-5">
           <div className="flex flex-col items-start gap-1">
-            <h1 className="flex items-center font-bold uppercase tracking-tight text-black text-4xl sm:text-5xl">
-              <span>ABOUT THE</span>
-              <span className="ml-2 inline-block -rotate-1 bg-black px-2.5 py-1 text-2xl sm:text-3xl font-black text-white tracking-tight shadow-md">BUILDER</span>
-            </h1>
+            <NavbarLogo />
             <div className="mt-1 text-xs font-mono font-bold uppercase tracking-widest text-black/60">
-              BEHIND THE SYSTEM COORDINATES
+              ABOUT THE BUILDER &middot; BEHIND THE SYSTEM COORDINATES
             </div>
           </div>
           

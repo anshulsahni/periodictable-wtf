@@ -6,6 +6,7 @@ import mixpanel from "./lib/mixpanel";
 import ElementBox from "./components/ElementBox";
 import ControlPanel from "./components/ControlPanel";
 import { getElementPhaseAndColor } from "./lib/elementUtils";
+import NavbarLogo from "./components/NavbarLogo";
 
 export default function Home() {
   const [elements, setElements] = useState<any[]>([]);
@@ -48,14 +49,7 @@ export default function Home() {
       {/* TOP HEADER */}
       <div className="mb-5 flex flex-col md:flex-row justify-between md:items-center gap-4">
         <div className="flex flex-col items-start gap-1">
-          <div className="flex items-center gap-3">
-            <h1 className="flex items-center font-bold uppercase tracking-tight text-black text-5xl sm:text-6xl">
-              <span>
-                PERIODIC<span className="text-[#ff4b93]">.</span>TABLE
-              </span>
-              <span className="ml-2 inline-block -rotate-2 bg-black px-2 py-1 text-3xl font-black text-white tracking-tight shadow-lg" style={{letterSpacing: '-0.05em'}}>WTF</span>
-            </h1>
-          </div>
+          <NavbarLogo />
           <div className="mt-1 text-xs font-medium uppercase tracking-widest text-black/60">
             A TACTILE PERIODIC TABLE &middot; 118 ELEMENTS &middot; PHASE BY TEMPERATURE
           </div>

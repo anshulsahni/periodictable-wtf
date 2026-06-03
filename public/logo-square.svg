@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Shadow (Offset Bottom-Right) -->
+  <rect x="24" y="24" width="464" height="464" fill="black" rx="6" />
+  <!-- Main Block Frame -->
+  <rect x="8" y="8" width="464" height="464" fill="#ff4b93" stroke="black" stroke-width="16" rx="6" />
+  <!-- Top Left: Atomic Number (Mystery Symbol) -->
+  <text x="36" y="68" font-family="monospace, ui-monospace" font-size="34" font-weight="900" fill="black">?!</text>
+  <!-- Top Right: Provisional Atomic Mass -->
+  <text x="444" y="68" font-family="monospace, ui-monospace" font-size="28" font-weight="900" text-anchor="end" fill="black">119</text>
+  <!-- Center: Wt Symbol -->
+  <text x="240" y="320" font-family="system-ui, -apple-system, sans-serif" font-size="210" font-weight="900" text-anchor="middle" fill="black" letter-spacing="-4">Wt</text>
+</svg>
